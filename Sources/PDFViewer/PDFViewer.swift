@@ -22,15 +22,17 @@ public struct PDFViewer: View {
     @State private var showingShare = false
     @State private var pdfType: PDFType = .local
 
-    public init(pdfName: String? = nil, pdfUrlString: String? = nil) {
+    public init(pdfName: String? = nil, pdfUrlString: String? = nil, showThumbnails: Bool = true, showPageNumbers: Bool = true) {
         self.pdfName = pdfName ?? ""
         self.pdfUrlString = pdfUrlString ?? ""
+        self.showThumbnails = showThumbnails
+        self.showPageNumber = showPageNumber
     }
     
     public var body: some View {
         GeometryReader { geometry in
             ZStack {
-                PDFReaderView(pdfName: self.pdfName, pdfUrlString: self.pdfUrlString, pdfType: self.pdfName.count > 0 ? .local : .remote, viewSize: geometry.size)
+                PDFReaderView(pdfName: self.pdfName, pdfUrlString: self.pdfUrlString, pdfType: self.pdfName.count > 0 ? .local : .remote, viewSize: geometry.size, showThumbnails: showThumbnails, showPageNumbers: showPageNumber)
                     .navigationBarItems(trailing:
                         Button(action: {
                             self.showingShare = true
