@@ -26,7 +26,7 @@ public struct PDFViewer: View {
         self.pdfName = pdfName ?? ""
         self.pdfUrlString = pdfUrlString ?? ""
         self.showThumbnails = showThumbnails
-        self.showPageNumber = showPageNumber
+        self.showPageNumber = showPageNumbers
     }
     
     public var body: some View {
