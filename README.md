@@ -8,11 +8,11 @@ The preferred way of installing is via the [Swift Package Manager](https://swift
 >Xcode 11 integrates with libSwiftPM to provide support for iOS, watchOS, and tvOS platforms.
 
 1. In Xcode, open your project and navigate to **File** → **Swift Packages** → **Add Package Dependency...**
-2. Paste the repository URL (`https://github.com/rajubd49/PDFViewer.git`) and click **Next**.
+2. Paste the repository URL (`https://github.com/b0gm0nster/PDFViewer.git`) and click **Next**.
 3. For **Rules**, select **Branch** (with branch set to `1.0.2` ).
 4. Click **Finish**.
 
-## Excample code
+## Example code
 ```Swift
 import SwiftUI
 import PDFViewer
@@ -94,6 +94,9 @@ struct ContentView: View, DownloadManagerDelegate {
     }
 }
 ```
+
+## Usage
+
 
 ## Features
 

@@ -17,6 +17,8 @@ public enum PDFType {
 public struct PDFViewer: View {
     var pdfName: String = ""
     var pdfUrlString: String = ""
+    var showThumbnails: Bool = true
+    var showPageNumber: Bool = true
     @State private var showingShare = false
     @State private var pdfType: PDFType = .local
 

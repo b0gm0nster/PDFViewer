@@ -14,6 +14,8 @@ struct PDFReaderView : UIViewRepresentable {
     var pdfUrlString: String = ""
     var pdfType: PDFType = .local
     var viewSize: CGSize = CGSize(width: 0.0, height: 0.0)
+    var showThumbnails: Bool = true
+    var showPageNumbers: Bool = true
     let pdfThumbnailSize = CGSize(width: 40, height: 54)
     let pdfView = PDFView()
     let activityView = UIActivityIndicatorView(style: .large)
@@ -69,8 +71,8 @@ struct PDFReaderView : UIViewRepresentable {
             }
         }
    
-        thumbnailView(pdfView: pdfView, viewSize: viewSize)
-        pageLabel(pdfView: pdfView, viewSize: viewSize)
+        if showThumbnails {thumbnailView(pdfView: pdfView, viewSize: viewSize)}
+        if showPageNumbers {pageLabel(pdfView: pdfView, viewSize: viewSize)}
         
         NotificationCenter.default.addObserver(context.coordinator, selector: #selector(context.coordinator.handlePageChange(notification:)), name: Notification.Name.PDFViewPageChanged, object: nil)
         NotificationCenter.default.addObserver(context.coordinator, selector: #selector(context.coordinator.handleAnnotationHit(notification:)), name: Notification.Name.PDFViewAnnotationHit, object: nil)
