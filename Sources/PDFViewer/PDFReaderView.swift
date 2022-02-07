@@ -12,6 +12,7 @@ import PDFKit
 struct PDFReaderView : UIViewRepresentable {
     var pdfName: String = ""
     var pdfUrlString: String = ""
+    var pdfData: Data? = nil
     var pdfType: PDFType = .local
     var viewSize: CGSize = CGSize(width: 0.0, height: 0.0)
     var showThumbnails: Bool = true
@@ -54,7 +55,10 @@ struct PDFReaderView : UIViewRepresentable {
         pdfView.pageBreakMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         pdfView.autoScales = true
         
-        if pdfType == .local {
+        if pdfType == .data {
+            let document = PDFDocument(data: pdfData!)
+            pdfView.document = document
+        } else if pdfType == .local {
             if let url = Bundle.main.url(forResource: pdfName, withExtension: "pdf"),
                 let document = PDFDocument(url: url) {
                 pdfView.document = document
