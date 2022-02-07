@@ -6,8 +6,13 @@
 //  Copyright © 2020 Raju. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
+#else
+import AppKit
+#endif
 import SwiftUI
+
 
 public struct ActivityViewController: UIViewControllerRepresentable {
 
